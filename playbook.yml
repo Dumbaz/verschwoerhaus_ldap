@@ -1,0 +1,6 @@
+---
+
+- hosts: all
+  roles:
+    - role: bennojoy.openldap_server
+    - role: dumbaz.web2ldap

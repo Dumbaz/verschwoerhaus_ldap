@@ -1,0 +1,27 @@
+---
+# tasks file for dumbaz.web2ldap
+- name: install yum packages
+  yum: name={{ item }} state=present
+  with_items:
+    - python-virtualenv
+    - python-devel
+    - openldap-devel
+  become: true
+
+- name: install Development tools
+  yum:
+    name: "@Development tools"
+    state: present
+  become: true
+
+- name: install web2ldap environment
+  shell: "virtualenv -p python2.7 --no-site-packages /opt/web2ldap"
+  become: true
+
+- name: install web2ldap
+  shell: "/opt/web2ldap/bin/pip2 install --find-links https://www.web2ldap.de/download.html web2ldap"
+  become: true
+
+- name: start web2ldap
+  shell: "nohup /opt/web2ldap/bin/web2ldap 127.0.0.1 1760 &"
+  become: true
