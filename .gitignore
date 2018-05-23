@@ -1,0 +1,5 @@
+# Vagrant Folder #
+.vagrant/
+
+# Ansible Remnants #
+playbook.retry
